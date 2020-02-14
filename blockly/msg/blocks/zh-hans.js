@@ -1,7 +1,9 @@
-// LCD1602
-Blockly.Msg.WEBDUINO_LCD1602 = "LCD (1602)，SDA ";
-Blockly.Msg.WEBDUINO_LCD1602_SCL = " SCL";
-Blockly.Msg.WEBDUINO_LCD1602_PRINT = "显示文字";
-Blockly.Msg.WEBDUINO_LCD1602_CLEAR = "清除屏幕内容";
-Blockly.Msg.WEBDUINO_LCD1602_LOCATE_X = "LCD 设定列:";
-Blockly.Msg.WEBDUINO_LCD1602_LOCATE_Y = "LCD 设定栏:";
+Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_SRC = "相机位置：";
+Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_ROTATE = "旋转镜头：";
+Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_LOCAL = "本机";
+Blockly.Msg.WEBDUINO_IMAGEML_MODEL_NAME = "，加载模型：";
+Blockly.Msg.WEBDUINO_IMAGEML_CLASSIFY = "对影像进行分类，当分类编号为";
+Blockly.Msg.WEBDUINO_IMAGEML_CLASSIFY2 = "时";
+Blockly.Msg.WEBDUINO_IMAGEML_RUN = "执行";
+Blockly.Msg.WEBDUINO_IMAGEML_LEVEL = "分类编号";
+Blockly.Msg.WEBDUINO_IMAGEML_CONFIDENCE = "分类信心度";

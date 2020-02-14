@@ -1,104 +1,71 @@
 //https: //blockly-demo.appspot.com/static/demos/blockfactory_old/index.html#ckpupe
-Blockly.Blocks['deeplearn_camera'] = {
+
+Blockly.Blocks['imageml2_classifier'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("影像串流來源 :")
-      .appendField(new Blockly.FieldTextInput("0"), "cameraURL");
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_SRC)
+      .appendField(new Blockly.FieldTextInput(Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_LOCAL), "camSource")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CAMERA_ROTATE)
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "rotate")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_MODEL_NAME)
+      .appendField(new Blockly.FieldTextInput(""), "modelName");
     this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io/');
+    this.setToolUrl(hasher.getUIUrl());
   }
 };
 
-Blockly.Blocks['deeplearn_classifier'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField("影像串流來源 :")
-      .appendField(new Blockly.FieldTextInput("ws://192.168.43.204:8889/rws/ws"), "cameraURL");
-    this.appendDummyInput()
-      .appendField("載入模型 URL:")
-      .appendField(new Blockly.FieldTextInput("https://aiot.webduino.cc/download/model-1530722287793/model.json"), "modelURL");
-    this.setOutput(true, null);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('https://aiot.webduino.cc/videoTraining.html');
-  }
-};
-
-
-Blockly.Blocks['deeplearn_label'] = {
+Blockly.Blocks['imageml2_callback'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("imageClassifier"), "name")
-      .appendField("對影像進行分類，當分類標籤為")
-      .appendField(new Blockly.FieldTextInput("0"), "label")
-      .appendField("時");
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CLASSIFY)
+      .appendField(new Blockly.FieldTextInput("0"), "idx")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CLASSIFY2);
     this.appendStatementInput("name")
       .setCheck(null)
-      .appendField("執行");
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_RUN);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(75);
     this.setTooltip('');
-    this.setHelpUrl('https://aiot.webduino.cc/videoTraining.html');
+    this.setToolUrl(hasher.getUIUrl());
   }
 };
 
-
-Blockly.Blocks['deeplearn_objectDetect'] = {
-  init: function () {
+Blockly.Blocks['imageml2_levelVal'] = {
+  init: function() {
     this.appendDummyInput()
-      .appendField("影像串流來源 :")
-      .appendField(new Blockly.FieldTextInput("1"), "cameraURL");
-    this.appendDummyInput()
-      .appendField("載入模型 URL:")
-      .appendField(new Blockly.FieldTextInput("/tfjs-model/model.json"), "modelURL");
+      .appendField(new Blockly.FieldVariable("imageClassifier"), "name")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_LEVEL);
     this.setOutput(true, null);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('https://webduino.io/');
+    this.setColour(45);
+ this.setTooltip("");
+ this.setToolUrl(hasher.getUIUrl());
   }
 };
 
-
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ev9a52
-Blockly.Blocks['deeplearn_detect'] = {
-  init: function () {
+Blockly.Blocks['imageml2_confidenceVal'] = {
+  init: function() {
     this.appendDummyInput()
-      .appendField("當")
-      .appendField(new Blockly.FieldVariable("objectDetect"), "name")
-      .appendField("偵測到物件名稱為")
-      .appendField(new Blockly.FieldTextInput("person"), "objectName");
-    this.appendStatementInput("objName")
-      .setCheck(null)
-      .appendField("執行");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(60);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-
-Blockly.Blocks['deeplearn_objinfo'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("objectDetect"), "objDetect")
-      .appendField("取得")
-      .appendField(new Blockly.FieldTextInput("person"), "objectName")
-      .appendField("的")
-      .appendField(new Blockly.FieldDropdown([
-        ["準確率", "classProb"],
-        ["左上角 x 座標", "left"],
-        ["左上角 y 座標", "top"],
-        ["寬度", "width"],
-        ["高度", "height"]
-      ]), "objInfo");
+      .appendField(new Blockly.FieldVariable("imageClassifier"), "name")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CONFIDENCE);
     this.setOutput(true, null);
-    this.setColour(60);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setColour(45);
+ this.setTooltip("");
+ this.setToolUrl(hasher.getUIUrl());
+  }
+};
+
+Blockly.Blocks['imageml2_classNameVal'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("imageClassifier"), "name")
+      .appendField(Blockly.Msg.WEBDUINO_IMAGEML_CLASSNAME);
+    this.setOutput(true, null);
+    this.setColour(45);
+ this.setTooltip("");
+ this.setToolUrl(hasher.getUIUrl());
   }
 };

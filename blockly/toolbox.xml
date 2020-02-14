@@ -1,31 +1,27 @@
-<category id="catDeeplearn">
-  <!--
-  <block type="variables_set">
-    <field name="VAR">camera</field>
-    <value name="VALUE">
-      <block type="deeplearn_camera">
-      </block>
-    </value>
-  </block>
-  -->
+<category id="catImageML">
   <block type="variables_set">
     <field name="VAR">imageClassifier</field>
     <value name="VALUE">
-      <block type="deeplearn_classifier">
+      <block type="imageml2_classifier">
+        <field name="camSource">本機</field>
+        <field name="modelName">/00009090卡片</field>
       </block>
     </value>
   </block>
-  <block type="deeplearn_label">
-  </block>
-  <block type="variables_set">
-    <field name="VAR">objectDetect</field>
-    <value name="VALUE">
-      <block type="deeplearn_objectDetect">
+  <block type="imageml2_callback">
+    <value name="name">
+      <block type="demo_show_text">
+        <value name="show_">
+          <block type="imageml2_classNameVal">
+          </block>
+        </value>
       </block>
     </value>
   </block>
-  <block type="deeplearn_detect">
+  <block type="imageml2_levelVal">
   </block>
-  <block type="deeplearn_objinfo">
+  <block type="imageml2_classNameVal">
+  </block>
+  <block type="imageml2_confidenceVal">
   </block>
 </category>

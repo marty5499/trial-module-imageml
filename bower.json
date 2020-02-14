@@ -1,13 +1,13 @@
 {
-  "name": "webduino-module-deeplearn",
-  "description": "Deeplearn Module for Webduino",
-  "main": "deeplearn.js",
+  "name": "webduino-module-imageml",
+  "description": "ImageML Module for Webduino",
+  "main": "imageml.js",
   "authors": "",
   "license": "MIT",
   "keywords": [
     "arduino",
     "webduino",
-    "deeplearn"
+    "imageml"
   ],
   "ignore": [
     "**/.*",

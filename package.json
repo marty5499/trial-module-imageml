@@ -1,8 +1,8 @@
 {
-  "name": "webduino-module-deeplearn",
+  "name": "webduino-module-imageml",
   "version": "1.0.0",
-  "description": "Deepleran Module for Webduino",
-  "main": "deeplearn.js",
+  "description": "Imageml Module for Webduino",
+  "main": "imageml.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
   "keywords": [
     "arduino",
     "webduino",
-    "deeplearn"
+    "imageml"
   ],
   "dependencies": {
     "webduino-js": "0.x"

@@ -1,51 +1,36 @@
-Blockly.JavaScript['deeplearn_camera'] = function (block) {
+Blockly.JavaScript['imageml2_classifier'] = function (block) {
   var text_cameraurl = block.getFieldValue('cameraURL');
-  var code = 'new Camera("' + text_cameraurl + '")';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['deeplearn_classifier'] = function (block) {
-  var text_cameraurl = block.getFieldValue('cameraURL');
-  var text_modelurl = block.getFieldValue('modelURL');
-  var code = 'getVideoClassifier("' + text_cameraurl + '","' + text_modelurl + '")';
+  var text_camSource = block.getFieldValue('camSource');
+  var checkbox_rotate = block.getFieldValue('rotate') == 'TRUE';
+  var text_modelname = block.getFieldValue('modelName');
+  var code = 'getVideoClassifier("' + text_modelname + '","' + text_camSource + '",' + checkbox_rotate + ',' + hasher.userId + ')';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-
-Blockly.JavaScript['deeplearn_label'] = function (block) {
-  var text_label = block.getFieldValue('label');
+Blockly.JavaScript['imageml2_callback'] = function (block) {
+  var idx = block.getFieldValue('idx');
   var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name'), Blockly.Variables.NAME_TYPE);
   var statements_name = Blockly.JavaScript.statementToCode(block, 'name');
-  var code = variable_name + '.onLabel(' + text_label + ',function(label){\n';
+  var code = variable_name + '.onLabel(' + idx + ', async function(idx){\n';
   code += statements_name + '\n';
   code += '});\n';
   return code;
 };
 
-
-Blockly.JavaScript['deeplearn_objectDetect'] = function (block) {
-  var text_cameraurl = block.getFieldValue('cameraURL');
-  var text_modelurl = block.getFieldValue('modelURL');
-  var code = 'getObjectDetect("' + text_cameraurl + '","' + text_modelurl + '")';
+Blockly.JavaScript['imageml2_levelVal'] = function (block) {
+  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name'), Blockly.Variables.NAME_TYPE);
+  var code = variable_name + '.getClass()';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-
-Blockly.JavaScript['deeplearn_detect'] = function (block) {
+Blockly.JavaScript['imageml2_confidenceVal'] = function (block) {
   var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name'), Blockly.Variables.NAME_TYPE);
-  var text_objectname = block.getFieldValue('objectName');
-  var statements_objname = Blockly.JavaScript.statementToCode(block, 'objName');
-  var code = variable_name + '.onName("' + text_objectname + '" , function(className, classProb, top, left, width, height){\n';
-  code += statements_objname + '\n';
-  code += '});\n';
-  return code;
+  var code = variable_name + '.getConfidence()';
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-
-Blockly.JavaScript['deeplearn_objinfo'] = function (block) {
-  var variable_objdetect = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('objDetect'), Blockly.Variables.NAME_TYPE);
-  var text_objectname = block.getFieldValue('objectName');
-  var dropdown_objinfo = block.getFieldValue('objInfo');
-  var code = variable_objdetect + '.objInfo("' + text_objectname + '","' + dropdown_objinfo + '")';
+Blockly.JavaScript['imageml2_classNameVal'] = function (block) {
+  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name'), Blockly.Variables.NAME_TYPE);
+  var code = variable_name + '.getClassName()';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
